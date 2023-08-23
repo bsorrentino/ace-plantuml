@@ -14,6 +14,10 @@ This project provides a [plantuml.yaml-tmLanguage](https://github.com/qjebbs/vsc
 
 This project provides [plantuml.vim](https://github.com/aklt/plantuml-syntax/blob/master/syntax/plantuml.vim) that could be converted in an equivalent `.tmLanguage`
 
+## PlantUML snippets
+
+In addition to the syntax highlighting, it would be useful to provide code snippets for common plantuml elements like classes, actors, use cases etc. we have translated the [snippets][vscode-snippets] from [plantuml-syntax] project 
 
 [plantuml-syntax]: https://github.com/aklt/plantuml-syntax
+[vscode-snippets]: https://code.visualstudio.com/docs/editor/userdefinedsnippets
 [vscode-plantuml]: https://github.com/qjebbs/vscode-plantuml
