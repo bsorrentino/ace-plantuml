@@ -51,6 +51,7 @@ oop.inherits(Mode, TextMode);
     // this.blockComment = {start: ""/*"", end: ""*/""};
     // Extra logic goes here.
     this.$id = "ace/mode/plantuml";
+    this.snippetFileId = "ace/snippets/plantuml";
 }).call(Mode.prototype);
 
 exports.Mode = Mode;
