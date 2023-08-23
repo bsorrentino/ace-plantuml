@@ -3,7 +3,8 @@ var lib = require('./lib');
 var path = require('path');
 
 function main(displayName, extRe) {
-    var name = lib.snakeCase(displayName).replace(/[^\w]/g, "");
+    // var name = lib.snakeCase(displayName).replace(/[^\w]/g, "");
+    var name = displayName.toLowerCase().replace(/[^\w]/g, "");
 
     /** demo **/
     var demoFileExt = extRe.split("|")[0] || name;
