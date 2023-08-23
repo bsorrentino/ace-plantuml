@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<plist version="1.0">
+   <dict>
+      <key>name</key>
+      <string>PlantUML</string>
+      <key>scopeName</key>
+      <string>source.plantuml</string>
+      <key>patterns</key>
+      <array>
+         <dict>
+            <key>match</key>
+            <string>/\%(^@start\|^@end\)\%(board\|bpm\|creole\|cute\|def\|ditaa\|dot\|flow\|gantt\|git\|jcckit\|json\|latex\|math\|mindmap\|nwdiag\|project\|salt\|tree\|uml\|wbs\|wire\|yaml\)/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlPreProc</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/!\%(assert\|define\|definelong\|dump_memory\|else\|enddefinelong\|endfunction\|endif\|endprocedure\|endsub\|exit\|function\|if\|ifdef\|ifndef\|import\|include\|local\|log\|pragma\|procedure\|return\|startsub\|theme\|undef\|unquoted\)\s*.*/ contains=plantumlDir</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlPreProc</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/#[0-9A-Fa-f]\{6\}\&gt;/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlColor</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/.\@=\([.-]\)\1\+\ze\s*\%(\w\|(\)/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlArrow</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\([-.]\)\1*\%(\w\{,5\}\1\+\)\?\%(|&gt;\|&gt;\|*\|o\|x\|#\|{\|+\|\^\)/ contains=plantumlArrowDirectedLine</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassRelationLR</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\%(&lt;|\|&lt;\|*\|o\|x\|#\|}\|+\|\^\)\([-.]\)\1*\%(\w\{,5\}\1\+\)\?/ contains=plantumlArrowDirectedLine</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassRelationRL</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\[\?\([-.]\)\1*\%(\w\{,5}\1\+\)\?\%(\[[^\]]\+\]\)\?\1*\(&gt;\|\\\|\/\)\2\?[ox]\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlArrowLR</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\[\?[ox]\?\(&lt;\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlArrowRL</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/[ox]\?\(&lt;\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\(&gt;\|\\\|\/\)\3\?[ox]\?/ contains=plantumlArrowDirectedLine</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlArrowBoth</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\([-.]\)\%(l\%[eft]\|r\%[ight]\|up\?\|d\%[own]\)\1/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlArrowDirectedLine</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\%(^\s*[rh]\?\%(note\|legend\)\)\@&lt;=\s\%([^:]\+$\)/ contained contains=plantumlKeyword,plantumlColor,plantumlString,plantumlTag</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlNoteMultiLineStart</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*+\s*\w\+/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassPublic</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*-\s*\w\+/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassPrivate</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*#\s*\w\+/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassProtected</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*\~\s*\w\+/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassPackPrivate</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/__\%(.\+__\)\?\|==\%(.\+==\)\?\|--\%(.\+--\)\?\|\.\.\%(.\+\.\.\)\?/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlClassSeparator</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\\n/ contained</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlSpecialString</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*'.*$/ contains=plantumlCommentTODO</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlComment</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/&lt;\/\?[bi]&gt;/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlTag</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\S\@&lt;=\s*\zs : .\+$/ contains=plantumlSpecialString</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlColonLine</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/&lt;&lt;[^-.]\+&gt;&gt;/ contains=plantumlSpecialString</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlStereotype</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/([^)]*)/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlActivityThing</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/===[^=]\+===/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlActivitySynch</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\%(^\%(#\S\+\)\?\)\@&lt;=:\_[^;|&lt;&gt;/\]}]\+[;|&lt;&gt;/\]}]$/ contains=plantumlSpecialString</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlActivityLabel</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*==[^=]\+==\s*$/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlSequenceDivider</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*|||\+\s*$/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlSequenceSpace</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*||\d\+||\+\s*$/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlSequenceSpace</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*\.\{3}$/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlSequenceDelay</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/^\s*:.\{-1,}:/ contains=plantumlSpecialString</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlUsecaseActor</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/\[[^\]]\{-}\]\%('s\)\?/ contains=plantumlSpecialString</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlGanttTask</string>
+         </dict>
+         <dict>
+            <key>match</key>
+            <string>/%\%(chr\|darken\|date\|dec2hex\|dirpath\|feature\|false\|file_exists\|filename\|function_exists\|get_variable_value\|getenv\|hex2dec\|hsl_color\|intval\|is_dark\|is_light\|lighten\|loadJSON\|lower\|newline\|not\|lighten\|reverse_color\|reverse_hsluv_color\|set_variable_value\|size\|string\|strlen\|strpos\|substr\|true\|upper\|variable_exists\|version\)/</string>
+            <key>name</key>
+            <string>source.plantuml.plantumlBuiltinFunction</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
