@@ -8,11 +8,9 @@
     <string>All diagram and styles support.</string>
     <key>fileTypes</key>
     <array>
-      <string>wsd</string>
-      <string>iuml</string>
-      <string>pu</string>
       <string>puml</string>
       <string>plantuml</string>
+      <string>wsd</string>
     </array>
     <key>name</key>
     <string>PlantUML</string>
