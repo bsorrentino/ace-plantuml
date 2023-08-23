@@ -163,7 +163,7 @@ var supportedModes = {
     PHP:         ["php|inc|phtml|shtml|php3|php4|php5|phps|phpt|aw|ctp|module"],
     PHP_Laravel_blade: ["blade.php"],
     Pig:         ["pig"],
-    PlantUML:    ["wsd|iuml|pu|puml|plantuml"],
+    PlantUML:    ["puml|plantuml|wsd"],
     PLSQL:       ["plsql"],
     Powershell:  ["ps1"],
     Praat:       ["praat|praatscript|psc|proc"],

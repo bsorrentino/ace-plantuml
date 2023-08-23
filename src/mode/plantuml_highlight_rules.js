@@ -738,7 +738,7 @@ var PlantUMLHighlightRules = function() {
 PlantUMLHighlightRules.metaData = {
     author: "jebbs, qjebbs@gmail.com",
     comment: "All diagram and styles support.",
-    fileTypes: ["wsd", "iuml", "pu", "puml", "plantuml"],
+    fileTypes: ["puml", "plantuml", "wsd"],
     name: "PlantUML",
     scopeName: "source.wsd"
 }

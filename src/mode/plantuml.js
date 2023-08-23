@@ -36,7 +36,7 @@
 
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
-var PlantUMLHighlightRules = require("./plant_uml_highlight_rules").PlantUMLHighlightRules;
+var PlantUMLHighlightRules = require("./plantuml_highlight_rules").PlantUMLHighlightRules;
 // TODO: pick appropriate fold mode
 var FoldMode = require("./folding/cstyle").FoldMode;
 
@@ -50,7 +50,7 @@ oop.inherits(Mode, TextMode);
     // this.lineCommentStart = ""\\s*/'"";
     // this.blockComment = {start: ""/*"", end: ""*/""};
     // Extra logic goes here.
-    this.$id = "ace/mode/plant_uml";
+    this.$id = "ace/mode/plantuml";
 }).call(Mode.prototype);
 
 exports.Mode = Mode;
