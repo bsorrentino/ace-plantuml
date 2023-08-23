@@ -630,14 +630,15 @@ function fetchAndConvert(name) {
 
 function convertTmLanguage(name, langStr) {
     parseLanguage(langStr, function(language) {
-        var highlighterFilename = lib.snakeCase(language.name).replace(/[^\w]/g, "");
+        // var highlighterFilename = lib.snakeCase(language.name).replace(/[^\w]/g, "");
+        var highlighterFilename = language.name.toLowerCase().replace(/[^\w]/g, "");
         var languageNameSanitized = lib.camelCase(language.name).replace(/[^\w]/g, "");
-        
+
         require("./add_mode")(languageNameSanitized, (language.fileTypes || []).join("|"));
 
         var highlighterFile = pathlib.normalize(lib.AceRoot + "src/mode/" + highlighterFilename + "_highlight_rules.js");
         var modeFile = pathlib.normalize(lib.AceRoot + "src/mode/" + highlighterFilename + ".js");
-
+        
         if (devMode) {
             console.log(util.inspect(language.patterns, false, 4));
             console.log(util.inspect(language.repository, false, 4));
