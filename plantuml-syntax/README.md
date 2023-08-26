@@ -16,8 +16,31 @@ This project provides [plantuml.vim](https://github.com/aklt/plantuml-syntax/blo
 
 ## PlantUML snippets
 
-In addition to the syntax highlighting, it would be useful to provide code snippets for common plantuml elements like classes, actors, use cases etc. we have translated the [snippets][vscode-snippets] from [plantuml-syntax] project 
+In addition to the syntax highlighting, it would be useful to provide code snippets for common plantuml elements like classes, actors, use cases etc. we have translated the [snippets][vscode-snippets] from [vscode-plantuml] project 
+
+### Translate snippets
+
+A great way to translate vscode snippets is to use **ChatGPT Code Interpreter** using the follwing prompt:
+```
+the Jason file has the following format:
+
+"snippet_id": {
+		"prefix": "snippet_prefix",
+		"body": [
+			"snippet_line1",
+            "snippet_line2", 
+           ...
+        ],
+		"description": "snippet_description"
+	},
+convert this Jason file in  text file using the follow transformation rules for each snippet_id:
+
+1. write "# snippet_description" and compact  snippet_description in one line summarising as much as possible content
+2. write: "snippet snippet_prefix
+3. write "snippet_lines" starting each line with a tab character and replace each "${" with "\${
+```
 
 [plantuml-syntax]: https://github.com/aklt/plantuml-syntax
 [vscode-snippets]: https://code.visualstudio.com/docs/editor/userdefinedsnippets
 [vscode-plantuml]: https://github.com/qjebbs/vscode-plantuml
+
