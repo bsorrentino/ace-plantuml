@@ -10,16 +10,16 @@ snippet scale
 	scale \${1:1.5}
 	\${2:scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100}
 # Title
-snippet tt
+snippet title multi
 	title 
 	\${1:multi-line text}$0
 	end title
 # Caption
-snippet cap
+snippet caption
 	caption \${1:Figure x.x description...}
 	$0
 # Legend
-snippet leg
+snippet legend
 	legend,
 		$0
 	end legend
@@ -41,25 +41,25 @@ snippet note link multi
 	end note
 # Header
 # This may be used to provide a date/time stamp of when the diagram was authored/reviewed
-snippet hd
+snippet header
 	header \${1:last-updated xx/xx/xxxx}
 	$0
 # Header multilines
-snippet hdn
+snippet header multi
 	header
 	\${1:last-updated xx/xx/xxxx}$0
 	end header
 # Footer      
-snippet ft
+snippet footer
 	footer \${1:authored by xxx}
 	$0
 # Footer multilines
-snippet ftn
+snippet footer multi
 	footer
 	\${1:authored by xxx}$0",
 	end footer
 # Separator
-snippet sep
+snippet sep newpage
 	newpage \${1:title text}
 	$0
 `;
@@ -67,12 +67,12 @@ snippet sep
 const sequence = 
 `
 # actor
-snippet act actor
+snippet actor
 	\${1:actor} \${2:alias}\${3: as "\${4:longName}"}\${5: <<(\${6:P},\${7:#ADD1B2})\${8|actor,participant,boundary,control,database,entity|}>>}
 	$0
 
 # auto incrementing numbered sequence 
-snippet num
+snippet auto number
 	autonumber \${1:nStartFrom} \${2:nStepBy}\${3: "###"}
 $0
 
@@ -83,15 +83,15 @@ snippet msg
 	\${6:'Alt=> async msg: A->>B or A-\\B; lost msg: A->o]; found msg: Ao<-]}
 
 # incoming
-snippet incoming
+snippet incoming msg
 	[-> \${1:objAlias}: \${2:message}
 
 # outgoing
-snippet outgoing
+snippet outgoing msg
 	\${1:bjAlias} ->] : \${2:message}
 
 # hide footbox
-snippet footbox
+snippet footbox hide
 	hide footbox
 
 # alternative or conditional execution
@@ -115,7 +115,7 @@ snippet loop
 	end
 
 # parallel execution 
-snippet par
+snippet parallel
 	par \${1:threadName1}
 		$0
 	else \${2:threadName2...}
