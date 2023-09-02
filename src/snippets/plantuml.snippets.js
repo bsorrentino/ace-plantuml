@@ -68,7 +68,12 @@ const sequence =
 `
 # actor
 snippet actor
-	\${1:actor} \${2:alias}\${3: as "\${4:longName}"}\${5: <<(\${6:P},\${7:#ADD1B2})\${8|actor,participant,boundary,control,database,entity|}>>}
+	\${1:actor} \${2:alias}\${3: as "\${4:longName}"}\${5: <<actor>>}
+	$0
+
+# participant
+snippet participant
+	\${1:participant} \${2:alias}\${3: as "\${4:longName}"}\${5: <<participant>>}
 	$0
 
 # auto incrementing numbered sequence 
