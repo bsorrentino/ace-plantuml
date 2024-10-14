@@ -1,4 +1,5 @@
 /// <reference path="./ace-modes.d.ts" />
+/// <reference path="./ace-extensions.d.ts" />
 
 export namespace Ace {
   export type NewLineMode = 'auto' | 'unix' | 'windows';
@@ -190,7 +191,7 @@ export namespace Ace {
     fontFamily: string;
     maxLines: number;
     minLines: number;
-    scrollPastEnd: boolean;
+    scrollPastEnd: number;
     fixedWidthGutter: boolean;
     customScrollbar: boolean;
     theme: string;
@@ -234,6 +235,8 @@ export namespace Ace {
     relativeLineNumbers: boolean;
     enableMultiselect: boolean;
     enableKeyboardAccessibility: boolean;
+    textInputAriaLabel: string;
+    enableMobileMenu: boolean;
   }
 
   export interface SearchOptions {
@@ -287,9 +290,9 @@ export namespace Ace {
   }
 
   export class MarkerGroup {
-    constructor(session: EditSession);
+    constructor(session: EditSession, options?: {markerType?: "fullLine" | "line"});
     setMarkers(markers: MarkerGroupItem[]): void;
-    getMarkerAtPosition(pos: Position): MarkerGroupItem;
+    getMarkerAtPosition(pos: Position): MarkerGroupItem | undefined;
   }
 
 
@@ -492,6 +495,8 @@ export namespace Ace {
     hasRedo(): boolean;
     isClean(): boolean;
     markClean(rev?: number): void;
+    toJSON(): object;
+    fromJSON(json: object): void;
   }
 
   export interface Position {
@@ -619,6 +624,8 @@ export namespace Ace {
     documentToScreenColumn(row: number, docColumn: number): number;
     documentToScreenRow(docRow: number, docColumn: number): number;
     getScreenLength(): number;
+    getPrecedingCharacter(): string;
+    toJSON(): Object;
     destroy(): void;
   }
 
@@ -657,7 +664,8 @@ export namespace Ace {
     removeListener(name: string, callback: Function): void;
     removeEventListener(name: string, callback: Function): void;
 
-    exec(command: string, editor: Editor, args: any): boolean;
+    exec(command: string | string[] | Command, editor: Editor, args: any): boolean;
+    canExecute(command: string | Command, editor: Editor): boolean;
     toggleRecording(editor: Editor): void;
     replay(editor: Editor): void;
     addCommand(command: Command): void;
@@ -1010,9 +1018,12 @@ export namespace Ace {
       prefix: string,
       callback: CompleterCallback): void;
     getDocTooltip?(item: Completion): undefined | string | Completion;
+    onSeen?: (editor: Ace.Editor, completion: Completion) => void;
+    onInsert?: (editor: Ace.Editor, completion: Completion) => void;
     cancel?(): void;
     id?: string;
-    triggerCharacters?: string[]
+    triggerCharacters?: string[];
+    hideInlinePreview?: boolean;
   }
 
   export class AceInline {
@@ -1063,6 +1074,10 @@ export namespace Ace {
     exactMatch?: boolean;
     inlineEnabled?: boolean;
     parentNode?: HTMLElement;
+    setSelectOnHover?: Boolean;
+    stickySelectionDelay?: Number;
+    ignoreCaption?: Boolean;
+    showLoadingState?: Boolean;
     emptyMessage?(prefix: String): String;
     getPopup(): AcePopup;
     showPopup(editor: Editor, options: CompletionOptions): void;
